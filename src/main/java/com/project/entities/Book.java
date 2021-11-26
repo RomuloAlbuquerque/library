@@ -4,10 +4,22 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tb_books")
 public class Book implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String author;
 	private String title;
@@ -16,6 +28,8 @@ public class Book implements Serializable {
 	private Integer numberPages;
 	private String category;
 	private Date publicationDate;
+	
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant registrationInstant;
 	
 	public Book() {
@@ -103,6 +117,7 @@ public class Book implements Serializable {
 		return registrationInstant;
 	}
 
+	@PrePersist
 	public void prePersist() {
 		registrationInstant = Instant.now();
 	}
