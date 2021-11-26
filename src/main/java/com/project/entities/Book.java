@@ -2,7 +2,6 @@ package com.project.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +12,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_books")
+@Table(name = "tb_book")
 public class Book implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -27,7 +26,7 @@ public class Book implements Serializable {
 	private String publishingCompany;
 	private Integer numberPages;
 	private String category;
-	private Date publicationDate;
+	private Instant publicationDate;
 	
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant registrationInstant;
@@ -37,7 +36,7 @@ public class Book implements Serializable {
 	}
 
 	public Book(Long id, String author, String title, String description, String publishingCompany, Integer numberPages,
-			String category, Date publicationDate, Instant registrationInstant) {
+			String category, Instant publicationDate, Instant registrationInstant) {
 		this.id = id;
 		this.author = author;
 		this.title = title;
@@ -105,11 +104,11 @@ public class Book implements Serializable {
 		this.category = category;
 	}
 
-	public Date getPublicationDate() {
+	public Instant getPublicationDate() {
 		return publicationDate;
 	}
 
-	public void setPublicationDate(Date publicationDate) {
+	public void setPublicationDate(Instant publicationDate) {
 		this.publicationDate = publicationDate;
 	}
 

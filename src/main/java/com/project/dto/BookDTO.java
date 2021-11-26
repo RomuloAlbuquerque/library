@@ -1,7 +1,6 @@
 package com.project.dto;
 
 import java.time.Instant;
-import java.util.Date;
 
 import com.project.entities.Book;
 
@@ -14,7 +13,7 @@ public class BookDTO {
 	private String publishingCompany;
 	private Integer numberPages;
 	private String category;
-	private Date publicationDate;
+	private Instant publicationDate;
 	private Instant registrationInstant;
 	
 	public BookDTO() {
@@ -22,7 +21,7 @@ public class BookDTO {
 	}
 
 	public BookDTO(Long id, String author, String title, String description, String publishingCompany,
-			Integer numberPages, String category, Date publicationDate, Instant registrationInstant) {
+			Integer numberPages, String category, Instant publicationDate, Instant registrationInstant) {
 		this.id = id;
 		this.author = author;
 		this.title = title;
@@ -103,11 +102,11 @@ public class BookDTO {
 		this.category = category;
 	}
 
-	public Date getPublicationDate() {
+	public Instant getPublicationDate() {
 		return publicationDate;
 	}
 
-	public void setPublicationDate(Date publicationDate) {
+	public void setPublicationDate(Instant publicationDate) {
 		this.publicationDate = publicationDate;
 	}
 
