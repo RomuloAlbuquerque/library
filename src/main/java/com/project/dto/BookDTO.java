@@ -3,6 +3,8 @@ package com.project.dto;
 import java.time.Instant;
 import java.util.Date;
 
+import com.project.entities.Book;
+
 public class BookDTO {
 	
 	private Long id;
@@ -21,7 +23,6 @@ public class BookDTO {
 
 	public BookDTO(Long id, String author, String title, String description, String publishingCompany,
 			Integer numberPages, String category, Date publicationDate, Instant registrationInstant) {
-		super();
 		this.id = id;
 		this.author = author;
 		this.title = title;
@@ -32,7 +33,20 @@ public class BookDTO {
 		this.publicationDate = publicationDate;
 		this.registrationInstant = registrationInstant;
 	}
-
+	
+	public BookDTO(Book entity) {
+		this.id = entity.getId();
+		this.author = entity.getAuthor();
+		this.title = entity.getTitle();
+		this.description = entity.getDescription();
+		this.publishingCompany = entity.getPublishingCompany();
+		this.numberPages = entity.getNumberPages();
+		this.category = entity.getCategory();
+		this.publicationDate = entity.getPublicationDate();
+		this.registrationInstant = entity.getRegistrationInstant();
+	}
+	
+	
 	public Long getId() {
 		return id;
 	}
