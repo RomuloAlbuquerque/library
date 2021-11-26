@@ -22,5 +22,19 @@ public class BookService {
 		Book entity = obj.get();
 		return new BookDTO(entity);
 	}
+	
+	@Transactional
+	public BookDTO insert(BookDTO dto) {
+		Book entity = new Book();
+		entity.setAuthor(dto.getAuthor());
+		entity.setTitle(dto.getTitle());
+		entity.setDescription(dto.getDescription());
+		entity.setPublishingCompany(dto.getPublishingCompany());
+		entity.setNumberPages(dto.getNumberPages());
+		entity.setCategory(dto.getCategory());
+		entity.setPublicationDate(dto.getPublicationDate());
+		entity = repository.save(entity);
+		return new BookDTO(entity);
+	}
 
 }
