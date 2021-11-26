@@ -104,7 +104,5 @@ public class BookDTO {
 	public void setRegistrationInstant(Instant registrationInstant) {
 		this.registrationInstant = registrationInstant;
 	}
-	
-	
 
 }
