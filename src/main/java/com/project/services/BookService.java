@@ -2,6 +2,8 @@ package com.project.services;
 
 import java.util.Optional;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,6 +32,19 @@ public class BookService {
 		copyDtoToEntity(dto, entity);
 		entity = repository.save(entity);
 		return new BookDTO(entity);
+	}
+	
+	@Transactional
+	public BookDTO update(Long id, BookDTO dto) {
+		try {
+			Book entity = repository.getOne(id);
+			entity.setTitle(dto.getTitle());
+			entity = repository.save(entity);
+			return new BookDTO(entity);
+		}
+		catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException("Id not found " + id);
+		}		
 	}
 	
 	private void copyDtoToEntity(BookDTO dto, Book entity) {
