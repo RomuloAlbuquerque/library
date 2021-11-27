@@ -6,6 +6,8 @@ import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,6 +27,12 @@ public class BookService {
 		Optional<Book> obj = repository.findById(id);
 		Book entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
 		return new BookDTO(entity);
+	}
+	
+	@Transactional(readOnly = true)
+	public Page<BookDTO> findAllPaged(PageRequest pageRequest) {
+		Page<Book> list = repository.findAll(pageRequest);
+		return list.map(x -> new BookDTO(x));
 	}
 	
 	@Transactional
