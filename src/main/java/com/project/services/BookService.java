@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.project.dto.BookDTO;
 import com.project.entities.Book;
 import com.project.repositories.BookRepository;
+import com.project.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class BookService {
@@ -19,7 +20,7 @@ public class BookService {
 	@Transactional
 	public BookDTO findById(Long id) {
 		Optional<Book> obj = repository.findById(id);
-		Book entity = obj.get();
+		Book entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
 		return new BookDTO(entity);
 	}
 	
