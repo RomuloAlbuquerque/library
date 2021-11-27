@@ -27,6 +27,12 @@ public class BookService {
 	@Transactional
 	public BookDTO insert(BookDTO dto) {
 		Book entity = new Book();
+		copyDtoToEntity(dto, entity);
+		entity = repository.save(entity);
+		return new BookDTO(entity);
+	}
+	
+	private void copyDtoToEntity(BookDTO dto, Book entity) {
 		entity.setAuthor(dto.getAuthor());
 		entity.setTitle(dto.getTitle());
 		entity.setDescription(dto.getDescription());
@@ -34,8 +40,6 @@ public class BookService {
 		entity.setNumberPages(dto.getNumberPages());
 		entity.setCategory(dto.getCategory());
 		entity.setPublicationDate(dto.getPublicationDate());
-		entity = repository.save(entity);
-		return new BookDTO(entity);
-	}
+	}	
 
 }
