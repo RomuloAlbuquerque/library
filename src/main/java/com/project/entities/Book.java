@@ -27,6 +27,7 @@ public class Book implements Serializable {
 	private Integer numberPages;
 	private String category;
 	private Instant publicationDate;
+	private String img;
 	
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant registrationInstant;
@@ -35,8 +36,11 @@ public class Book implements Serializable {
 		
 	}
 
+	
+
 	public Book(Long id, String author, String title, String description, String publishingCompany, Integer numberPages,
-			String category, Instant publicationDate, Instant registrationInstant) {
+			String category, Instant publicationDate, String img, Instant registrationInstant) {
+		super();
 		this.id = id;
 		this.author = author;
 		this.title = title;
@@ -45,6 +49,7 @@ public class Book implements Serializable {
 		this.numberPages = numberPages;
 		this.category = category;
 		this.publicationDate = publicationDate;
+		this.img = img;
 		this.registrationInstant = registrationInstant;
 	}
 
@@ -115,6 +120,18 @@ public class Book implements Serializable {
 	public Instant getRegistrationInstant() {
 		return registrationInstant;
 	}
+
+	public String getImg() {
+		return img;
+	}
+
+
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+
 
 	@PrePersist
 	public void prePersist() {

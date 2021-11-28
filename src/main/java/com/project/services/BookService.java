@@ -73,6 +73,7 @@ public class BookService {
 		entity.setNumberPages(dto.getNumberPages());
 		entity.setCategory(dto.getCategory());
 		entity.setPublicationDate(dto.getPublicationDate());
+		entity.setImg(dto.getImg());
 	}	
 
 }

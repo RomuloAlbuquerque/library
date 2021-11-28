@@ -15,13 +15,17 @@ public class BookDTO {
 	private String category;
 	private Instant publicationDate;
 	private Instant registrationInstant;
+	private String img;
 	
 	public BookDTO() {
 		
 	}
 
+	
+	
 	public BookDTO(Long id, String author, String title, String description, String publishingCompany,
-			Integer numberPages, String category, Instant publicationDate, Instant registrationInstant) {
+			Integer numberPages, String category, Instant publicationDate, Instant registrationInstant, String img) {
+		super();
 		this.id = id;
 		this.author = author;
 		this.title = title;
@@ -31,8 +35,9 @@ public class BookDTO {
 		this.category = category;
 		this.publicationDate = publicationDate;
 		this.registrationInstant = registrationInstant;
+		this.img = img;
 	}
-	
+
 	public BookDTO(Book entity) {
 		this.id = entity.getId();
 		this.author = entity.getAuthor();
@@ -43,6 +48,7 @@ public class BookDTO {
 		this.category = entity.getCategory();
 		this.publicationDate = entity.getPublicationDate();
 		this.registrationInstant = entity.getRegistrationInstant();
+		this.img = entity.getImg();
 	}
 	
 	
@@ -118,4 +124,12 @@ public class BookDTO {
 		this.registrationInstant = registrationInstant;
 	}
 
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+	
 }
