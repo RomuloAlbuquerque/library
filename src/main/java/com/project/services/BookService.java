@@ -47,7 +47,7 @@ public class BookService {
 	public BookDTO update(Long id, BookDTO dto) {
 		try {
 			Book entity = repository.getOne(id);
-			entity.setTitle(dto.getTitle());
+			copyDtoToEntity(dto, entity);
 			entity = repository.save(entity);
 			return new BookDTO(entity);
 		}
