@@ -1,5 +1,8 @@
 package com.project.dto;
 
+import com.project.services.validation.UserInsertValid;
+
+@UserInsertValid
 public class UserInsertDTO extends UserDTO {
 	
 	private String password;
