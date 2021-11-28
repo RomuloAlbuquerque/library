@@ -3,13 +3,22 @@ package com.project.dto;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
 import com.project.entities.User;
 
 public class UserDTO {
 	
 	private Long id;
+	
+	@NotBlank(message = "Campo obrigatório")
 	private String firstName;
+	
+	@NotBlank(message = "Campo obrigatório")
 	private String lastName;
+	
+	@Email(message = "Por favor entrar com e-mail válido")
 	private String email;
 	
 	Set<RoleDTO> roles = new HashSet<>();
