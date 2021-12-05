@@ -13,8 +13,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_book")
-public class Book implements Serializable {
+@Table(name = "tb_admin_book")
+public class AdminBook implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -36,11 +36,11 @@ public class Book implements Serializable {
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant registrationInstant;
 	
-	public Book() {
+	public AdminBook() {
 		
 	}
 	
-	public Book(Long id, String author, String title, String description, String publishingCompany, Integer numberPages,
+	public AdminBook(Long id, String author, String title, String description, String publishingCompany, Integer numberPages,
 			String category, Instant publicationDate, String img, User whoRegistered, Instant registrationInstant) {
 		super();
 		this.id = id;
@@ -161,7 +161,7 @@ public class Book implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Book other = (Book) obj;
+		AdminBook other = (AdminBook) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

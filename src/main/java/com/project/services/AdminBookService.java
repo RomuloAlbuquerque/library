@@ -11,45 +11,45 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.project.dto.BookDTO;
-import com.project.entities.Book;
-import com.project.repositories.BookRepository;
+import com.project.dto.AdminBookDTO;
+import com.project.entities.AdminBook;
+import com.project.repositories.AdminBookRepository;
 import com.project.services.exceptions.ResourceNotFoundException;
 
 @Service
-public class BookService {
+public class AdminBookService {
 	
 	@Autowired
-	private BookRepository repository;
+	private AdminBookRepository repository;
 	
 	@Transactional
-	public BookDTO findById(Long id) {
-		Optional<Book> obj = repository.findById(id);
-		Book entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
-		return new BookDTO(entity);
+	public AdminBookDTO findById(Long id) {
+		Optional<AdminBook> obj = repository.findById(id);
+		AdminBook entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
+		return new AdminBookDTO(entity);
 	}
 	
 	@Transactional(readOnly = true)
-	public Page<BookDTO> findAllPaged(PageRequest pageRequest) {
-		Page<Book> list = repository.findAll(pageRequest);
-		return list.map(x -> new BookDTO(x));
+	public Page<AdminBookDTO> findAllPaged(PageRequest pageRequest) {
+		Page<AdminBook> list = repository.findAll(pageRequest);
+		return list.map(x -> new AdminBookDTO(x));
 	}
 	
 	@Transactional
-	public BookDTO insert(BookDTO dto) {
-		Book entity = new Book();
+	public AdminBookDTO insert(AdminBookDTO dto) {
+		AdminBook entity = new AdminBook();
 		copyDtoToEntity(dto, entity);
 		entity = repository.save(entity);
-		return new BookDTO(entity);
+		return new AdminBookDTO(entity);
 	}
 	
 	@Transactional
-	public BookDTO update(Long id, BookDTO dto) {
+	public AdminBookDTO update(Long id, AdminBookDTO dto) {
 		try {
-			Book entity = repository.getOne(id);
+			AdminBook entity = repository.getOne(id);
 			copyDtoToEntity(dto, entity);
 			entity = repository.save(entity);
-			return new BookDTO(entity);
+			return new AdminBookDTO(entity);
 		}
 		catch (EntityNotFoundException e) {
 			throw new ResourceNotFoundException("Id not found " + id);
@@ -81,7 +81,7 @@ public class BookService {
 	}
 	*/
 	
-	private void copyDtoToEntity(BookDTO dto, Book entity) {
+	private void copyDtoToEntity(AdminBookDTO dto, AdminBook entity) {
 		entity.setAuthor(dto.getAuthor());
 		entity.setTitle(dto.getTitle());
 		entity.setDescription(dto.getDescription());

@@ -1,10 +1,13 @@
 package com.project.dto;
 
+import java.io.Serializable;
 import java.time.Instant;
 
 import com.project.entities.ClientBook;
 
-public class ClientBookDTO {
+public class ClientBookDTO implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	private Long id;
 	private String author;

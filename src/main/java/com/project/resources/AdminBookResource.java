@@ -18,24 +18,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.project.dto.BookDTO;
-import com.project.services.BookService;
+import com.project.dto.AdminBookDTO;
+import com.project.services.AdminBookService;
 
 @RestController
-@RequestMapping(value = "/books")
-public class BookResource {
+@RequestMapping(value = "admin/books")
+public class AdminBookResource {
 	
 	@Autowired
-	private BookService service;
+	private AdminBookService service;
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<BookDTO> findById(@PathVariable Long id){
-		BookDTO dto = service.findById(id);
+	public ResponseEntity<AdminBookDTO> findById(@PathVariable Long id){
+		AdminBookDTO dto = service.findById(id);
 		return ResponseEntity.ok().body(dto);
 	}
 	
 	@GetMapping
-	public ResponseEntity<Page<BookDTO>> findAll(
+	public ResponseEntity<Page<AdminBookDTO>> findAll(
 			@RequestParam(value = "page", defaultValue = "0") Integer page,
 			@RequestParam(value = "linesPerPage", defaultValue = "5") Integer linesPerPage,
 			@RequestParam(value = "direction", defaultValue = "ASC") String direction,
@@ -44,13 +44,13 @@ public class BookResource {
 		
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 				
-		Page<BookDTO> list = service.findAllPaged(pageRequest);
+		Page<AdminBookDTO> list = service.findAllPaged(pageRequest);
 		
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@PostMapping 
-	public ResponseEntity<BookDTO> insert(@RequestBody BookDTO dto){
+	public ResponseEntity<AdminBookDTO> insert(@RequestBody AdminBookDTO dto){
 		dto = service.insert(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(dto.getId()).toUri();
@@ -58,7 +58,7 @@ public class BookResource {
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<BookDTO> update(@PathVariable Long id, @RequestBody BookDTO dto) {
+	public ResponseEntity<AdminBookDTO> update(@PathVariable Long id, @RequestBody AdminBookDTO dto) {
 		dto = service.update(id, dto);
 		return ResponseEntity.ok().body(dto);
 	}

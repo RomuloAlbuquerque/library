@@ -1,11 +1,14 @@
 package com.project.dto;
 
+import java.io.Serializable;
 import java.time.Instant;
 
-import com.project.entities.Book;
+import com.project.entities.AdminBook;
 import com.project.entities.User;
 
-public class BookDTO {
+public class AdminBookDTO implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	private Long id;
 	private String author;
@@ -19,11 +22,11 @@ public class BookDTO {
 	private String img;
 	private User whoRegistered;
 	
-	public BookDTO() {
+	public AdminBookDTO() {
 		
 	}
 	
-	public BookDTO(Long id, String author, String title, String description, String publishingCompany,
+	public AdminBookDTO(Long id, String author, String title, String description, String publishingCompany,
 			Integer numberPages, String category, Instant publicationDate, Instant registrationInstant, String img, User whoRegistered) {
 		super();
 		this.id = id;
@@ -39,7 +42,7 @@ public class BookDTO {
 		this.whoRegistered = whoRegistered;
 	}
 
-	public BookDTO(Book entity) {
+	public AdminBookDTO(AdminBook entity) {
 		this.id = entity.getId();
 		this.author = entity.getAuthor();
 		this.title = entity.getTitle();
