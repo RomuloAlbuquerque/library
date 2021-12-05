@@ -24,9 +24,13 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	
 	private static final String[] PUBLIC = { "/oauth/token", "/h2-console/**" };
 	
-	private static final String[] CLIENT_OR_ADMIN = { "/books/**" };
+	private static final String[] ALL_BOOKS = { "/allbooks/**" };
 	
-	private static final String[] ADMIN = {  "/users/**"  };
+	private static final String[] CLIENT_BOOKS = { "/client/books/**" };
+	
+	private static final String[] ADMIN_BOOKS = { "/books/**" };
+	
+	private static final String[] USERS = {  "/users/**"  };
 
 	@Override
 	public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
@@ -45,22 +49,31 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		http.authorizeRequests()
 		.antMatchers(PUBLIC).permitAll()
 		
-		.antMatchers(HttpMethod.GET, CLIENT_OR_ADMIN).permitAll()
-		.antMatchers(HttpMethod.POST, CLIENT_OR_ADMIN).permitAll()
+		/*
+		.antMatchers(HttpMethod.GET, ALL_BOOKS).permitAll()
+		.antMatchers(HttpMethod.GET, CLIENT_BOOKS).permitAll()
+		.antMatchers(HttpMethod.POST, ADMIN_BOOKS).permitAll()
+		*/
+		.antMatchers(HttpMethod.GET, ALL_BOOKS).hasAnyRole("CLIENT", "ADMIN")
 		
-		.antMatchers(HttpMethod.GET, CLIENT_OR_ADMIN).hasAnyRole("CLIENT", "ADMIN")
-		.antMatchers(HttpMethod.POST, CLIENT_OR_ADMIN).hasAnyRole("CLIENT", "ADMIN")
+		.antMatchers(HttpMethod.GET, CLIENT_BOOKS).hasAnyRole("CLIENT", "ADMIN")
+		.antMatchers(HttpMethod.POST, CLIENT_BOOKS).hasAnyRole("CLIENT", "ADMIN")
+		.antMatchers(HttpMethod.PUT, CLIENT_BOOKS).hasAnyRole("CLIENT", "ADMIN")
+		.antMatchers(HttpMethod.DELETE, CLIENT_BOOKS).hasAnyRole("CLIENT", "ADMIN")
 		
-		.antMatchers(HttpMethod.PUT, CLIENT_OR_ADMIN).hasRole("ADMIN")
-		.antMatchers(HttpMethod.DELETE, CLIENT_OR_ADMIN).hasRole("ADMIN")
+		.antMatchers(HttpMethod.GET, ADMIN_BOOKS).hasAnyRole("ADMIN")
+		.antMatchers(HttpMethod.POST, ADMIN_BOOKS).hasAnyRole("ADMIN")
+		.antMatchers(HttpMethod.PUT, ADMIN_BOOKS).hasAnyRole("ADMIN")
+		.antMatchers(HttpMethod.DELETE, ADMIN_BOOKS).hasAnyRole("ADMIN")
 		
-		.antMatchers(HttpMethod.GET, ADMIN).hasRole("ADMIN")
-		.antMatchers(HttpMethod.POST, ADMIN).hasRole("ADMIN")
-		.antMatchers(HttpMethod.PUT, ADMIN).hasRole("ADMIN")
-		.antMatchers(HttpMethod.DELETE, ADMIN).hasRole("ADMIN")
+		.antMatchers(HttpMethod.GET, USERS).hasRole("ADMIN")
+		.antMatchers(HttpMethod.POST, USERS).hasRole("ADMIN")
+		.antMatchers(HttpMethod.PUT, USERS).hasRole("ADMIN")
+		.antMatchers(HttpMethod.DELETE, USERS).hasRole("ADMIN")
 		
 		//.antMatchers(CLIENT_OR_ADMIN).hasAnyRole("CLIENT", "ADMIN")
 		//.antMatchers(ADMIN).hasRole("ADMIN")
+		.anyRequest().authenticated();
 		;
 	}
 	
