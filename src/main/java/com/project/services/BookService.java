@@ -65,6 +65,22 @@ public class BookService {
 		}
 	}
 	
+	/*
+	public void deleteForClient(Long id) {
+		User user = userRepository.findByEmail(authentication.getName());
+		Set<Role> rolesSet = new HashSet<>();
+		rolesSet = user.getRoles();
+		for(Role role : rolesSet){
+            if(role.getId() == 2) {
+            	Optional<Book> obj = repository.findById(id);
+            	Book entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
+            	entity.get
+            }
+        }
+		
+	}
+	*/
+	
 	private void copyDtoToEntity(BookDTO dto, Book entity) {
 		entity.setAuthor(dto.getAuthor());
 		entity.setTitle(dto.getTitle());

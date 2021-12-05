@@ -61,7 +61,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		
 		//.antMatchers(CLIENT_OR_ADMIN).hasAnyRole("CLIENT", "ADMIN")
 		//.antMatchers(ADMIN).hasRole("ADMIN")
-		.anyRequest().authenticated();
 		;
 	}
 	

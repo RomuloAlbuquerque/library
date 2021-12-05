@@ -3,6 +3,7 @@ package com.project.dto;
 import java.time.Instant;
 
 import com.project.entities.Book;
+import com.project.entities.User;
 
 public class BookDTO {
 	
@@ -16,15 +17,14 @@ public class BookDTO {
 	private Instant publicationDate;
 	private Instant registrationInstant;
 	private String img;
+	private User whoRegistered;
 	
 	public BookDTO() {
 		
 	}
-
-	
 	
 	public BookDTO(Long id, String author, String title, String description, String publishingCompany,
-			Integer numberPages, String category, Instant publicationDate, Instant registrationInstant, String img) {
+			Integer numberPages, String category, Instant publicationDate, Instant registrationInstant, String img, User whoRegistered) {
 		super();
 		this.id = id;
 		this.author = author;
@@ -36,6 +36,7 @@ public class BookDTO {
 		this.publicationDate = publicationDate;
 		this.registrationInstant = registrationInstant;
 		this.img = img;
+		this.whoRegistered = whoRegistered;
 	}
 
 	public BookDTO(Book entity) {
@@ -49,6 +50,7 @@ public class BookDTO {
 		this.publicationDate = entity.getPublicationDate();
 		this.registrationInstant = entity.getRegistrationInstant();
 		this.img = entity.getImg();
+		this.whoRegistered = entity.getWhoRegistered();
 	}
 	
 	
@@ -131,5 +133,13 @@ public class BookDTO {
 	public void setImg(String img) {
 		this.img = img;
 	}
+
+	public User getWhoRegistered() {
+		return whoRegistered;
+	}
+
+	public void setWhoRegistered(User whoRegistered) {
+		this.whoRegistered = whoRegistered;
+	}	
 	
 }

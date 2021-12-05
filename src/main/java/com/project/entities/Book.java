@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
@@ -29,17 +30,18 @@ public class Book implements Serializable {
 	private Instant publicationDate;
 	private String img;
 	
+	@OneToOne
+	private User whoRegistered;
+	
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant registrationInstant;
 	
 	public Book() {
 		
 	}
-
 	
-
 	public Book(Long id, String author, String title, String description, String publishingCompany, Integer numberPages,
-			String category, Instant publicationDate, String img, Instant registrationInstant) {
+			String category, Instant publicationDate, String img, User whoRegistered, Instant registrationInstant) {
 		super();
 		this.id = id;
 		this.author = author;
@@ -50,6 +52,7 @@ public class Book implements Serializable {
 		this.category = category;
 		this.publicationDate = publicationDate;
 		this.img = img;
+		this.whoRegistered = whoRegistered;
 		this.registrationInstant = registrationInstant;
 	}
 
@@ -125,13 +128,17 @@ public class Book implements Serializable {
 		return img;
 	}
 
-
-
 	public void setImg(String img) {
 		this.img = img;
 	}
 
+	public User getWhoRegistered() {
+		return whoRegistered;
+	}
 
+	public void setWhoRegistered(User whoRegistered) {
+		this.whoRegistered = whoRegistered;
+	}
 
 	@PrePersist
 	public void prePersist() {
