@@ -13,7 +13,8 @@
 
 	<div style="border: 1px solid black; width: 90%; margin: auto; padding: 10px">
 
-		<div style="margin-bottom: 50px; border: 1px solid transparent; width: 50%; margin: auto; padding: 10px; text-align: center">
+		<div
+			style="margin-bottom: 50px; border: 1px solid transparent; width: 50%; margin: auto; padding: 10px; text-align: center">
 			<h1>Desafio TechLead</h1>
 			<h2>Analista Desenvolvedor</h2>
 			<h3>Java Spring</h3>
@@ -22,26 +23,32 @@
 
 		<div style="border: 1px solid black; width: 70%; margin: auto; padding: 10px">
 
-			<h1 style="text-align: center; font-size: 18pt">Cadastrar Livro</h1>
-			
+			<h1 style="text-align: center; font-size: 18pt">Cadastrar Usuário</h1>
+
 			<form action="">
 
 				<div class="mb-3">
-					<label for="exampleFormControlInput1" class="form-label">Author: </label>
-					<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Author">
-				</div>
-
-				<div class="mb-3">
 					<label for="exampleFormControlInput1" class="form-label">Nome: </label>
-					<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="nome">
+					<input type="text" class="form-control" id="firstName" placeholder="Nome">
 				</div>
 
 				<div class="mb-3">
-					<label for="exampleFormControlInput1" class="form-label">Descrição: </label>
-					<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Descrição">
+					<label for="exampleFormControlInput1" class="form-label">Sobrenome: </label>
+					<input type="text" class="form-control" id="lastName" placeholder="Sobrenome">
+				</div>
+
+				<div class="mb-3">
+					<label for="exampleFormControlInput1" class="form-label">E-mail: </label>
+					<input type="text" class="form-control" id="email" placeholder="E-mail">
+				</div>
+
+				<div class="mb-3">
+					<label for="exampleFormControlInput1" class="form-label">Senha: </label>
+					<input type="password" class="form-control" id="password" placeholder="Senha">
 				</div>
 
 			</form>
+			<button type="button" class="btn btn-primary" onclick="saveUser()">Salvar</button>
 
 		</div>
 
@@ -53,6 +60,19 @@
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 		crossorigin="anonymous"></script>
 
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+	<script type="text/javascript">
+		function saveUser(){
+			var firstName = $("#firstName").val();
+			var lastName = $("#lastName").val();
+			var email = $("#email").val();
+			var password = $("#password").val();
+			
+			alert("Olá "+firstName+" "+lastName+". Seja Bem Vindo!");
+		}
+	</script>
 </body>
 
 </html>
