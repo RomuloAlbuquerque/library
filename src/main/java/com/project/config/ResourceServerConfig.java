@@ -28,7 +28,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	
 	private static final String[] CLIENT_BOOKS = { "/client/books/**" };
 	
-	private static final String[] ADMIN_BOOKS = { "/books/**" };
+	private static final String[] ADMIN_BOOKS = { "/admin/books/**" };
 	
 	private static final String[] USERS = {  "/users/**"  };
 
@@ -49,11 +49,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		http.authorizeRequests()
 		.antMatchers(PUBLIC).permitAll()
 		
-		/*
-		.antMatchers(HttpMethod.GET, ALL_BOOKS).permitAll()
-		.antMatchers(HttpMethod.GET, CLIENT_BOOKS).permitAll()
-		.antMatchers(HttpMethod.POST, ADMIN_BOOKS).permitAll()
-		*/
 		.antMatchers(HttpMethod.GET, ALL_BOOKS).hasAnyRole("CLIENT", "ADMIN")
 		
 		.antMatchers(HttpMethod.GET, CLIENT_BOOKS).hasAnyRole("CLIENT", "ADMIN")
@@ -71,10 +66,10 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		.antMatchers(HttpMethod.PUT, USERS).hasRole("ADMIN")
 		.antMatchers(HttpMethod.DELETE, USERS).hasRole("ADMIN")
 		
-		//.antMatchers(CLIENT_OR_ADMIN).hasAnyRole("CLIENT", "ADMIN")
-		//.antMatchers(ADMIN).hasRole("ADMIN")
-		.anyRequest().authenticated();
+		//.anyRequest().authenticated();
 		;
+		
+		
 	}
 	
 }
