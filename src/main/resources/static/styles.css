@@ -193,3 +193,48 @@ body {
 	background-color: #EEE8AA;
 }
 
+.div-voltar-sair{
+	display: flex;
+	width: 90%;
+	border: 1px solid transparent;
+	margin: auto;
+	text-align: center;
+	color: #8B4513;
+}
+
+.voltar{
+	border: 1px solid transparent;
+	background-color: #B8860B;
+	width: 15%;
+	height: 30px;
+	margin-top: 10px;
+}
+
+.div-separacao{
+	border: 1px solid transparent;
+	width: 70%;
+	height: 30px;
+	margin-top: 10px;
+}
+
+.sair{
+	border: 1px solid transparent;
+	background-color: #B8860B;
+	width: 15%;
+	height: 30px;
+	margin-top: 10px;
+}
+
+.div-voltar-sair a:link {
+   color: white;
+   text-decoration: none;
+}
+
+.div-voltar-sair a:hover {
+    color: #000000;
+}
+
+.div-voltar-sair a:active {
+    color: green;
+}
+
