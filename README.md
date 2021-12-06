@@ -27,6 +27,8 @@ Biblioteca Ajax.
 
 SOBRE O SISTEMA.
 
+Contexto: localhost:8080/library
+
 Login e senha dos usuários que pertencem a carga inicial do banco de dados:
 Perfil Administrador:
 Login: romulo.albuquerque@techlead.com
