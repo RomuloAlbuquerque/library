@@ -111,6 +111,15 @@ alter table tb_admin_book add constraint FK2qo4k1lwp1pv5mdbei56xxa5t foreign key
 alter table tb_user_role add constraint FKea2ootw6b6bb0xt3ptl28bymv foreign key (role_id) references tb_role
 alter table tb_user_role add constraint FK7vn3h53d0tqdimm8cp45gc0kl foreign key (user_id) references tb_user
 
+COLLECTION POSTMAN PARA TESTES
+https://go.postman.co/workspace/My-Workspace~0923a205-006c-47a5-86f4-64c613f3c494/collection/18659028-f137f1e9-f003-42ee-871c-09d630677709
+
+AMBIENTE POSTMAN PERFIL ADMIN PARA TESTES
+https://go.postman.co/workspace/My-Workspace~0923a205-006c-47a5-86f4-64c613f3c494/environment/18659028-1d0b55cf-a585-4f1d-aa98-99a23da702a1
+
+AMBIENTE POSTMAN PERFIL CLIENTE PARA TESTES
+https://go.postman.co/workspace/My-Workspace~0923a205-006c-47a5-86f4-64c613f3c494/environment/18659028-b35f44b8-4502-4279-9552-3f0dc0dd8bd3
+
 
 REQUISIÇÕES PARA TESTES
 
