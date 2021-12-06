@@ -166,7 +166,11 @@ body {
 }
 
 .div-quad a:active {
-    color: green;
+    color: blue;
+}
+
+.div-quad a:visited {
+    color: white;
 }
 
 .todos{
@@ -235,6 +239,37 @@ body {
 }
 
 .div-voltar-sair a:active {
-    color: green;
+    color: red;
 }
 
+.div-voltar-sair a:visited {
+    color: white;
+}
+
+.input-insert-user{
+	border: 1px solid transparent;
+	height: 70px;
+	width: 80%;	
+	margin: auto;
+}
+
+.seja-bem-vindo-insert-user{
+	border: 1px solid transparent;
+	height: 100px;	
+	width: 100%;
+	text-align: center;
+	padding: 1px;
+	margin-top: 1px; 
+}
+
+.div-main-insert-user{
+	border: 1px solid transparent;
+	padding-top: 1px; 
+}
+
+.div-input-salvar{
+	border: 1px solid transparent;
+	width: 70px;
+	margin: auto;
+	margin-top:15px;
+}
