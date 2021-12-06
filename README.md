@@ -1,13 +1,11 @@
-Empresa: Tech Lead IT Solutions
-Cargo: Analista Desenvolvedor
-Linguagem: Java
+Empresa: Tech Lead IT Solutions.
+Cargo: Analista Desenvolvedor.
+Linguagem: Java.
 
-Frameworks e Tecnologias
+Frameworks e Tecnologias Utilizadas.
 
 Back-end:
-
-Spring Framework
-
+Spring Framework.
 Por ser o framework mais utilizado no mercado mundial, 
 este projeto é completamente compatível para ser aproveitado
 em implementações futuras, em conjunto com as principais
@@ -25,42 +23,81 @@ Biblioteca JQuery;
 Biblioteca Ajax.
 
 
-SOBRE O SISTEMA
+SOBRE O SISTEMA.
+
+Login e senha dos usuários que pertencem a carga inicial do banco de dados:
+Perfil Administrador:
+Login: romulo.albuquerque@techlead.com
+Senha: romulo123
+Perfil Cliente:
+Login: leonardo.falcao@techlead.com
+Senha: leo123
 
 Descrição do Projeto:
 Este projeto implementa um sistema para gerenciamento de uma biblioteca.
 
-Perfis de Usuários
+Perfis de Usuários.
 O sistema possui dois perfis de Usuários, sendo eles: 
-1. Administrador
-2. Cliente
+1. Administrador.
+2. Cliente.
 
 Administrador:
 O perfil Administrador permite:
-- Cadastrar livros;
-- Visualizar quaisquer livros cadastrados;
-- Editar qualquer livro cadastrado;
-- Excluir quaisquer livros cadastrados;
+- Cadastrar livros.
+- Visualizar quaisquer livros cadastrados.
+- Editar qualquer livro cadastrado.
+- Excluir quaisquer livros cadastrados.
 
-Cliente
+Cliente.
 O perfil Cliente permite:
-- Cadastrar livros;
-- Visualizar quaisquer livros cadastrados;
+- Cadastrar livros.
+- Visualizar quaisquer livros cadastrados.
 - Editar somente livros cadastrados por ele mesmo.
 - Excluir somente livros cadastrados por ele mesmo.
 
-Telas
+Telas.
 O projeto do sistema possui:
-- Tela para login com senha;
+- Tela para login com senha.
 - Tela para novos usuários efetuarem cadastro (somente em perfil cliente).
 - Tela para recuperação de senha.
-- Tela para gerência de livros, para Perfil Administrador realizar as operações a ele atribuídas;
+- Tela para gerência de livros, para Perfil Administrador realizar as operações a ele atribuídas.
 - Tela para Perfil Cliente, que permite realizar as operações a ele atribuídas.
 
 #PLUS:  não foi solicitado na análise de requisitos.
 - O Perfil Administrador possui uma tela exclusiva que lhe permite cadastrar novos usuários Administradores e/ou Clientes; bem como excluir ou editar usuários.
 
 
-PENDENTES
-Dump do Banco de Dados
-Carga Inicial do Banco de Dados
+CARGA INICIAL DO BANCO DE DADOS (que já carregam quando o projeto é iniciado).
+
+insert into tb_user (id, first_name, last_name, email, password) values (1, 'Romulo', 'Albuquerque', 'romulo.albuquerque@techlead.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
+insert into tb_user (id, first_name, last_name, email, password) values (2, 'Leonardo', 'Falcão', 'leonardo.falcao@techlead.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
+
+insert into tb_role (id, authority) values (1, 'ROLE_ADMIN');
+insert into tb_role (id, authority) values (2, 'ROLE_CLIENT');
+
+insert into tb_user_role (user_id, role_id) values (1, 1);
+insert into tb_user_role (user_id, role_id) values (2, 2);
+
+insert into tb_admin_book (id, author, title, description, publishing_company, number_pages, category, publication_date, registration_instant, img) values (1, 'John Green', 'A Culpa É Das Estrelas', 'Inspirador, corajoso, irreverente e brutal, A culpa é das estrelas é a obra mais ambiciosa e emocionante de John Green, sobre a alegria e a tragédia que é viver e amar.', 'Intrínseca', 288, 'Romance', TIMESTAMP WITH TIME ZONE '2012-07-09T00:00:00.00Z', TIMESTAMP WITH TIME ZONE '2021-11-25T00:00:00.00Z', 'https://github.com/RomuloAlbuquerque/library/blob/desafio-techlead/img/capa-livro-a-culpa-e-das-estrelas.jpg?raw=true');
+
+insert into tb_client_book (id, author, title, description, publishing_company, number_pages, category, publication_date, registration_instant, img) values (2, 'Spencer Johnson', 'Quem Mexeu No Meu Queijo', 'Quem mexeu no meu queijo? é uma leitura rápida, mas que traz ensinamentos que vão permanecer por toda a vida.', 'Record', 112, 'Romance', TIMESTAMP WITH TIME ZONE '2017-11-10T00:00:00.00Z', TIMESTAMP WITH TIME ZONE '2021-11-25T00:00:00.00Z', 'https://github.com/RomuloAlbuquerque/library/blob/desafio-techlead/img/capa-livro-quem-mexeu-no-meu-queiro.jpg?raw=true');
+
+insert into tb_client_book (id, author, title, description, publishing_company, number_pages, category, publication_date, registration_instant, img) values (3, 'Junji Ito', 'Quem Mexeu No Meu Queijo', 'Uma das melhores obras do mestre dos mangás de horror', 'Pipoca e Nanquim', 412, 'Mangá', TIMESTAMP WITH TIME ZONE '2021-11-01T00:00:00.00Z', TIMESTAMP WITH TIME ZONE '2021-11-25T00:00:00.00Z', 'https://github.com/RomuloAlbuquerque/library/blob/desafio-techlead/img/capa-livro-frankstain.jpg?raw=true');
+
+
+DUMP DO BANCO DE DADOS
+
+drop table if exists tb_admin_book CASCADE 
+drop table if exists tb_client_book CASCADE 
+drop table if exists tb_role CASCADE 
+drop table if exists tb_user CASCADE 
+drop table if exists tb_user_role CASCADE 
+create table tb_admin_book (id bigint generated by default as identity, author varchar(255), category varchar(255), description varchar(255), img varchar(255), number_pages integer, publication_date timestamp, publishing_company varchar(255), registration_instant TIMESTAMP WITHOUT TIME ZONE, title varchar(255), who_registered_id bigint, primary key (id))
+create table tb_client_book (id bigint generated by default as identity, author varchar(255), category varchar(255), description varchar(255), img varchar(255), number_pages integer, publication_date timestamp, publishing_company varchar(255), registration_instant TIMESTAMP WITHOUT TIME ZONE, title varchar(255), primary key (id))
+create table tb_role (id bigint generated by default as identity, authority varchar(255), primary key (id))
+create table tb_user (id bigint generated by default as identity, email varchar(255), first_name varchar(255), last_name varchar(255), password varchar(255), primary key (id))
+create table tb_user_role (user_id bigint not null, role_id bigint not null, primary key (user_id, role_id))
+alter table tb_user add constraint UK_4vih17mube9j7cqyjlfbcrk4m unique (email)
+alter table tb_admin_book add constraint FK2qo4k1lwp1pv5mdbei56xxa5t foreign key (who_registered_id) references tb_user
+alter table tb_user_role add constraint FKea2ootw6b6bb0xt3ptl28bymv foreign key (role_id) references tb_role
+alter table tb_user_role add constraint FK7vn3h53d0tqdimm8cp45gc0kl foreign key (user_id) references tb_user
