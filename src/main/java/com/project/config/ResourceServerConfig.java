@@ -22,7 +22,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	@Autowired
 	private JwtTokenStore tokenStore;
 	
-	private static final String[] PUBLIC = { "/oauth/token", "/h2-console/**", "admin/books/**", "/users/**" };
+	private static final String[] PUBLIC = { "/oauth/token", "/h2-console/**", /*"admin/books/**", "/users/**"*/ };
 	
 	private static final String[] ALL_BOOKS = { "/allbooks/**" };
 	
@@ -68,7 +68,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		
 		//.anyRequest().authenticated();
 		;
-		
 		
 	}
 	

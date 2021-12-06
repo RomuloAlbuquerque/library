@@ -23,45 +23,38 @@
 			</header>
 
 			<main>
-				<div class="div-main">
-					<div class="div-form">
+				<div class="div-main div-main-home">
+					<div class="div-form div-4-quad">
 
 						<div class="seja-bem-vindo">
-							<h3>Seja Bem Vindo</h3>
+							<h3>Gerencie Seus Livros Aqui</h3>
 						</div>
 
-						<div class="email">
+						<div class="div-2-quad">
 
-							<div class="form-group">
-								<label for="username">E-mail:</label><br>
-								<input type="text" name="username" id="username" class="form-control">
-							</div>
-						</div>
-
-						<div class="senha">
-							<div class="form-group">
-								<label for="password">Senha:</label><br>
-								<input type="password" name="password" id="password" class="form-control">
-							</div>
-						</div>
-
-
-						<div class="div-3-elements">
-							<div class="div-2-links">
-								<div class="div-novo-cadastro">
-									<a href="#">Novo Cadastro</a>
-								</div>
-								<div class="div-recuperar-senha">
-									<a href="#">Recuperar Senha</a>
-								</div>
+							<div class="div-quad todos">
+								<a href="#">Todos</a>
 							</div>
 
-							<div class="div-input-entrar">
-								<a href="home.html"><input type="submit" name="submit" class="btn btn-info btn-md" value="Entrar"></a>
 
+							<div class="div-quad cadastrar">
+								<a href="#">Cadastrar</a>
 							</div>
 
 						</div>
+
+						<div class="div-2-quad">
+
+							<div class="div-quad atualizar">
+								<a href="#">Atualizar</a>
+							</div>
+
+							<div class="div-quad deletar">
+								<a href="#">Deletar</a>
+							</div>
+
+						</div>
+
 
 					</div>
 				</div>
@@ -81,22 +74,6 @@
 			<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 				integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-
-			<script type="text/javascript">
-				function login() {
-					var id = $("#id").val();
-					var name = $("#name").val();
-					$.ajax({
-						url: 'localhost/8080:library/techlead',
-						username: 'romulo.albuquerque@techlead.com',
-						password: 'romulo123',
-						success: function (completo) {
-							$('#resultado').html(completo);
-						}
-					});
-				}
-
-			</script>
 
 		</div>
 	</div>
